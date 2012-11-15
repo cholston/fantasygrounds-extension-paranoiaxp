@@ -1,0 +1,75 @@
+<!-- This file is part of the Fantasy Grounds Open Foundation Ruleset project. 
+  -- For the latest information, see http://www.fantasygrounds.com/
+  --
+  -- Copyright 2008 SmiteWorks Ltd.
+  --
+  -- This file is provided under the Open Game License version 1.0a
+  -- Refer to the license.html file for the full license text
+  --
+  -- All producers of work derived from this material are advised to
+  -- familiarize themselves with the license, and to take special
+  -- care in providing the definition of Product Identity (as specified
+  -- by the OGL) in their products.
+  --
+  -- All material submitted to the Open Foundation Ruleset project must
+  -- contain this notice in a manner applicable to the source file type.
+  -->
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="2.0">
+	<windowclass name="charsheet">
+		<frame>charsheet</frame>
+		<placement>
+			<size>
+				<width>525</width>
+				<height>611</height>
+			</size>
+			<position>
+				<x>410</x>
+				<y>90</y>
+			</position>
+		</placement>
+		<minimize />
+		<nodelete />
+		<playercontrol />
+		<sheetdata>
+			<subwindow name="main">
+				<bounds>0,0,-1,-1</bounds>
+				<class>charsheet_main</class>
+			</subwindow>
+			<subwindow name="gear">
+				<bounds>0,0,-1,-1</bounds>
+				<class>charsheet_gear</class>
+			</subwindow>
+			<subwindow name="history">
+				<bounds>0,0,-1,-1</bounds>
+				<class>charsheet_history</class>
+			</subwindow>
+			<subwindow name="notes">
+				<bounds>0,0,-1,-1</bounds>
+				<class>charsheet_notes</class>
+			</subwindow>
+
+			<tabcontrol name="tabs">
+				<bounds>-22,50,18,492</bounds>
+				<tab>
+					<icon>tab_main</icon>
+					<subwindow>main</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_qualities</icon>
+					<subwindow>history</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_gear</icon>
+					<subwindow>gear</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_notes</icon>
+					<subwindow>notes</subwindow>
+				</tab>
+				<activate>1</activate>
+			</tabcontrol>
+		</sheetdata>
+	</windowclass>
+</root>

@@ -1,0 +1,684 @@
+<!-- This file is provided under the Open Game License version 1.0a
+  -- For more information on OGL and related issues, see 
+  --   http://www.wizards.com/d20
+  --
+  -- For information on the Fantasy Grounds d20 Ruleset licensing and
+  -- the OGL license text, see the d20 ruleset license in the program
+  -- options.
+  --
+  -- All producers of work derived from this definition are adviced to
+  -- familiarize themselves with the above licenses, and to take special
+  -- care in providing the definition of Product Identity (as specified
+  -- by the OGL) in their products.
+  --
+  -- Copyright 2007 SmiteWorks Ltd.
+  -->
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="2.0">
+
+	<windowclass name="charsheet_weaponlistitem">
+		<sizelimits>
+			<minimum>
+				<height>18</height>
+			</minimum>
+		</sizelimits>
+
+		<sheetdata>
+			<stringfield name="weaponname">
+				<anchored>
+					<left>
+						<anchor>left</anchor>
+						<offset>10</offset>
+					</left>
+					<top>
+						<anchor>top</anchor>
+						<offset>5</offset>
+					</top>
+					<size>
+						<width>215</width>
+					</size>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<frame>
+					<name>textline</name>
+					<offset>0,5,0,0</offset>
+				</frame>
+			</stringfield>
+            
+			<stringfield name="weapontype">
+				<anchored>
+					<to>weaponname</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>58</width>
+					</size>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<stateframe>
+					<hover>
+						<name>sheetfocus</name>
+						<offset>6,7,7,5</offset>
+					</hover>
+				</stateframe> 
+				<static />
+				<center />
+				<script>
+					function setStat(value)
+						if value and value ~= "" then
+              						setValue(value);
+						else
+							setValue("-");
+						end
+					end
+          
+					function cycleStat()
+						local cyclemap = { ["-"] = "Energy", 
+								   ["Energy"] = "Field", 
+					                           ["Field"] = "Hand", 
+				                                   ["Hand"] = "Projectile", 
+				                                   ["Projectile"] = "Thrown", 
+				                                   ["Thrown"] = "Unarmed", 
+				                                   ["Unarmed"] = "-" };
+						local statnow = getValue() or "-";
+						setStat(cyclemap[statnow]);
+					end
+          
+			                function onClickDown(button, x, y)
+				            cycleStat();
+					end
+			        </script>
+			</stringfield>
+			<stringfield name="damagetype">
+				<anchored>
+					<to>weapontype</to>
+					<position>right</position>
+					<offset>10,0</offset>
+					<size>
+						<width>10</width>
+					</size>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<stateframe>
+					<hover>
+						<name>sheetfocus</name>
+						<offset>6,7,7,5</offset>
+					</hover>
+				</stateframe> 
+				<static />
+				<center />
+				<script>
+					function setStat(value)
+						if value and value ~= "" then
+              						setValue(value);
+						else
+							setValue("-");
+						end
+					end
+          
+					function cycleStat()
+						local cyclemap = { ["-"] = "E", 
+								   ["E"] = "I", 
+					                           ["I"] = "B", 
+				                                   ["B"] = "-" };
+						local statnow = getValue() or "-";
+						setStat(cyclemap[statnow]);
+					end
+          
+			                function onClickDown(button, x, y)
+				            cycleStat();
+					end
+			        </script>
+			</stringfield>
+            		<stringfield name="mbm">
+				<anchored>
+					<to>damagetype</to>
+					<position>right</position>
+					<offset>10,0</offset>
+					<size>
+						<width>30</width>
+					</size>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<frame>
+				
+						<name>modifier</name>
+						<offset>5,5,5,5</offset>
+				
+				</frame> 
+				<center />
+			</stringfield>
+			<numberfield name="shots">
+				<anchored>
+					<to>mbm</to>
+					<position>right</position>
+					<offset>10,0</offset>
+					<size>
+						<width>27</width>
+					</size>
+				</anchored>
+				<frame>
+					<name>modifier</name>
+					<offset>5,5,5,5</offset>
+				</frame>
+				<font>sheetnumbersmall</font>
+				
+			</numberfield>
+			<numberfield name="range">
+				<anchored>
+					<to>shots</to>
+					<position>right</position>
+					<offset>10,0</offset>
+					<size>
+						<width>27</width>
+					</size>
+				</anchored>
+				<frame>
+					<name>modifier</name>
+					<offset>5,5,5,5</offset>
+				</frame>
+				<font>sheetnumbersmall</font>
+				
+			</numberfield>
+			<stringfield name="clearance">
+				<anchored>
+					<to>range</to>
+					<position>right</position>
+					<offset>10,0</offset>
+					<size>
+						<width>15</width>
+					</size>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<stateframe>
+					<hover>
+						<name>sheetfocus</name>
+						<offset>6,7,7,5</offset>
+					</hover>
+				</stateframe> 
+				<static />
+				<center />
+				<script>
+					function setStat(value)
+						if value and value ~= "" then
+              						setValue(value);
+						else
+							setValue("-");
+						end
+					end
+          
+					function cycleStat()
+						local cyclemap = { ["-"] = "IR", 
+								   ["IR"] = "R", 
+					                           ["R"] = "O", 
+					                           ["O"] = "Y", 
+					                           ["Y"] = "G", 
+					                           ["G"] = "B", 
+					                           ["B"] = "I", 
+					                           ["I"] = "V", 
+					                           ["V"] = "UV", 
+					                           ["UV"] = "TR", 
+				                                   ["TR"] = "-" };
+						local statnow = getValue() or "-";
+						setStat(cyclemap[statnow]);
+					end
+          
+			                function onClickDown(button, x, y)
+				            cycleStat();
+					end
+			        </script>
+			</stringfield>
+		</sheetdata>
+	</windowclass>
+
+
+	<windowclass name="charsheet_stufflistitem">
+		<sizelimits>
+			<minimum>
+				<height>18</height>
+			</minimum>
+		</sizelimits>
+
+		<sheetdata>
+			<stringfield name="itemname">
+				<anchored>
+					<left>
+						<anchor>left</anchor>
+						<offset>10</offset>
+					</left>
+					<top>
+						<anchor>top</anchor>
+						<offset>5</offset>
+					</top>
+					<size>
+						<width>420</width>
+					</size>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<frame>
+					<name>textline</name>
+					<offset>0,5,0,0</offset>
+				</frame>
+			</stringfield>
+            
+			<stringfield name="clearance">
+				<anchored>
+					<to>itemname</to>
+					<position>right</position>
+					<offset>10,0</offset>
+					<size>
+						<width>15</width>
+					</size>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<stateframe>
+					<hover>
+						<name>sheetfocus</name>
+						<offset>6,7,7,5</offset>
+					</hover>
+				</stateframe> 
+				<static />
+				<center />
+				<script>
+					function setStat(value)
+						if value and value ~= "" then
+              						setValue(value);
+						else
+							setValue("-");
+						end
+					end
+          
+					function cycleStat()
+						local cyclemap = { ["-"] = "IR", 
+								   ["IR"] = "R", 
+					                           ["R"] = "O", 
+					                           ["O"] = "Y", 
+					                           ["Y"] = "G", 
+					                           ["G"] = "B", 
+					                           ["B"] = "I", 
+					                           ["I"] = "V", 
+					                           ["V"] = "UV", 
+					                           ["UV"] = "TR", 
+				                                   ["TR"] = "-" };
+						local statnow = getValue() or "-";
+						setStat(cyclemap[statnow]);
+					end
+          
+			                function onClickDown(button, x, y)
+				            cycleStat();
+					end
+			        </script>
+			</stringfield>
+		</sheetdata>
+	</windowclass>
+
+  
+	<windowclass name="charsheet_gear">
+		<placement>
+			<size>
+				<width>252</width>
+				<height>611</height>
+			</size>
+		</placement>
+		<nodelete />
+		<sheetdata>
+      <!-- Toadwart/Kenshin - Add portrait for Combat Tracker etc. -->
+      <genericcontrol name="PortraitFrame">
+          <bounds>450,45,25,25</bounds>
+          <icon>button_dragtarget</icon>
+          <script file="scripts\charsheet_portrait.lua" />
+      </genericcontrol> 
+      <!-- end - Add portrait for Combat Tracker etc. -->
+		
+			<!-- OVERVIEW -->
+<genericcontrol name="overviewframe">
+				<bounds>15,20,415,80</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+
+			<labeledstring name="name">
+				<anchored>
+					<to>overviewframe</to>
+					<position>insidetopleft</position>
+					<offset>15,15</offset>
+					<size>
+						<width>150</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<anchorto>overviewframe</anchorto>
+				<label>name</label>
+				<font>sheetlabelsmall</font>
+				<tabtarget>
+					<next>servicegroup</next>
+					<prev>name</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      			<labeledstring name="servicegroup">
+				<anchored>
+					<to>name</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>225</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<label>service group</label>
+				<font>sheetlabelsmall</font>
+				<tabtarget>
+					<next>servicefirm</next>
+					<prev>name</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      			<labeledstring name="servicefirm">
+				<anchored>
+					<to>name</to>
+				        <position>belowleft</position>
+					<offset>0,10</offset>
+					<size>
+						<width>380</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<label>service firm</label>
+				<font>sheetlabelsmall</font>
+				<tabtarget>
+					<prev>servicegroup</prev>
+				</tabtarget>
+			</labeledstring>
+
+			<!-- Finances -->
+			<genericcontrol name="financeframe">
+				<bounds>15,100,480,75</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+      
+			<numberfield name="plasticreds" >
+				<anchored>
+					<to>financeframe</to>
+					<position>insidetopleft</position>
+					<offset>95,12</offset>
+					<size>
+						<width>90</width>
+						<height>14</height>
+					</size>
+				</anchored>
+				<frame>
+					<name>modifier</name>
+					<offset>6,5,6,5</offset>
+				</frame>
+				<keyeditframe>
+					<name>sheetfocus</name>
+					<offset>6,5,6,5</offset>
+				</keyeditframe>
+				<font>sheetnumbersmall</font>
+		      </numberfield>
+			<stringcontrol>
+				<anchored>
+					<to>plasticreds</to>
+					<position>left</position>
+					<offset>10,0</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<center />
+				<static>Plasticreds: </static>
+			</stringcontrol>
+      
+			<numberfield name="credits">
+				<anchored>
+					<to>plasticreds</to>
+					<position>belowleft</position>
+					<offset>0,5</offset>
+					<size>
+						<width>90</width>
+						<height>14</height>
+					</size>
+				</anchored>
+				<frame>
+					<name>modifier</name>
+					<offset>6,5,6,5</offset>
+				</frame>
+				<keyeditframe>
+					<name>sheetfocus</name>
+					<offset>6,5,6,5</offset>
+				</keyeditframe>
+				<font>sheetnumbersmall</font>
+      			</numberfield>
+			<stringcontrol>
+				<anchored>
+					<to>credits</to>
+					<position>left</position>
+					<offset>10,0</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<center />
+				<static>ME Card: </static>
+			</stringcontrol>
+      			<stringfield name="licenses">
+				<anchored>
+					<to>financeframe</to>
+					<position>insidetopright</position>
+					<offset>25,23</offset>
+					<size>
+						<height>40</height>
+						<width>225</width>
+					</size>
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<font>sheetlabelsmall</font>
+				<frame>
+					<name>textline</name>
+					<offset>2,0,2,0</offset>
+				</frame>
+			</stringfield>
+			<stringcontrol>
+				<anchored>
+					<to>financeframe</to>
+					<position>insidetopright</position>
+					<offset>200,10</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<center />
+				<static>Credit Licenses</static>
+			</stringcontrol>
+            
+      <!-- GEAR -->
+			<genericcontrol name="inventoryframe">
+				<bounds>15,175,480,175</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+
+			<stringcontrol>
+				<anchored>
+					<to>inventoryframe</to>
+					<position>insidetop</position>
+					<offset>0,11</offset>
+				</anchored>
+				<center />
+				<font>sheetlabel</font>
+				<static>Weapons</static>
+			</stringcontrol>
+			
+			<stringcontrol>
+				<anchored>
+					<to>inventoryframe</to>
+					<position>insidetopleft</position>
+					<offset>20,20</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>Name</static>
+			</stringcontrol>
+			<stringcontrol>
+				<anchored>
+					<to>inventoryframe</to>
+					<position>insidetopleft</position>
+					<offset>245,20</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>Type</static>
+			</stringcontrol>
+			<stringcontrol>
+				<anchored>
+					<to>inventoryframe</to>
+					<position>insidetopleft</position>
+					<offset>302,20</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>Dmg</static>
+			</stringcontrol>
+			<stringcontrol>
+				<anchored>
+					<to>inventoryframe</to>
+					<position>insidetopleft</position>
+					<offset>332,20</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>MBM</static>
+			</stringcontrol>
+			<stringcontrol>
+				<anchored>
+					<to>inventoryframe</to>
+					<position>insidetopleft</position>
+					<offset>367,20</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>Shots</static>
+			</stringcontrol>
+			<stringcontrol>
+				<anchored>
+					<to>inventoryframe</to>
+					<position>insidetopleft</position>
+					<offset>402,20</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>Range</static>
+			</stringcontrol>
+			<stringcontrol>
+				<anchored>
+					<to>inventoryframe</to>
+					<position>insidetopleft</position>
+					<offset>437,20</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>Clear</static>
+			</stringcontrol>
+			
+			
+			<windowlist name="weaponlist">
+				<anchored>
+					<to>inventoryframe</to>
+					<position>insidetopleft</position>
+					<offset>10,35</offset>
+					<size>
+						<height>130</height>
+					</size>
+				</anchored>
+				<datasource>.weaponlist</datasource>
+				<class>charsheet_weaponlistitem</class>
+				<allowcreate />
+				<allowdelete />
+				
+				
+			</windowlist>
+			<scrollercontrol>
+				<anchored>
+					<to>inventoryframe</to>
+					<position>insidebottomright</position>
+					<offset>5,5</offset>
+					<size>
+						<width>45</width>
+						<height>27</height>
+					</size>
+				</anchored>
+				<target>weaponlist</target>
+				<button>
+					<normal>button_scroller</normal>
+					<pressed>button_scroller_down</pressed>
+				</button>
+			</scrollercontrol>
+
+
+			<genericcontrol name="stuffframe">
+				<bounds>15,375,480,200</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+
+			<stringcontrol>
+				<anchored>
+					<to>stuffframe</to>
+					<position>insidetop</position>
+					<offset>0,11</offset>
+				</anchored>
+				<center />
+				<font>sheetlabel</font>
+				<static>Stuff</static>
+			</stringcontrol>
+			
+			<stringcontrol>
+				<anchored>
+					<to>stuffframe</to>
+					<position>insidetopleft</position>
+					<offset>20,20</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>Name</static>
+			</stringcontrol>
+			<stringcontrol>
+				<anchored>
+					<to>stuffframe</to>
+					<position>insidetopleft</position>
+					<offset>427,20</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>Clearance</static>
+			</stringcontrol>
+			
+			
+			<windowlist name="stufflist">
+				<anchored>
+					<to>stuffframe</to>
+					<position>insidetopleft</position>
+					<offset>10,35</offset>
+					<size>
+						<height>130</height>
+					</size>
+				</anchored>
+				<datasource>.stufflist</datasource>
+				<class>charsheet_stufflistitem</class>
+				<allowcreate />
+				<allowdelete />
+				
+			</windowlist>
+			<scrollercontrol>
+				<anchored>
+					<to>stuffframe</to>
+					<position>insidebottomright</position>
+					<offset>5,5</offset>
+					<size>
+						<width>45</width>
+						<height>27</height>
+					</size>
+				</anchored>
+				<target>stufflist</target>
+				<button>
+					<normal>button_scroller</normal>
+					<pressed>button_scroller_down</pressed>
+				</button>
+			</scrollercontrol>
+	
+    
+		</sheetdata>
+	</windowclass>
+</root>

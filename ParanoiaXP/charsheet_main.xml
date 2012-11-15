@@ -1,0 +1,780 @@
+<!-- This file is part of the Fantasy Grounds Open Foundation Ruleset project. 
+  -- For the latest information, see http://www.fantasygrounds.com/
+  --
+  -- Copyright 2008 SmiteWorks Ltd.
+  --
+  -- This file is provided under the Open Game License version 1.0a
+  -- Refer to the license.html file for the full license text
+  --
+  -- All producers of work derived from this material are advised to
+  -- familiarize themselves with the license, and to take special
+  -- care in providing the definition of Product Identity (as specified
+  -- by the OGL) in their products.
+  --
+  -- All material submitted to the Open Foundation Ruleset project must
+  -- contain this notice in a manner applicable to the source file type.
+  -->
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="2.0">
+	
+            
+	<windowclass name="charsheet_main">
+		<placement>
+			<size>
+				<width>252</width>
+				<height>611</height>
+			</size>
+		</placement>
+		<nodelete />
+		<sheetdata>
+      <!-- Toadwart/Kenshin - Add portrait for Combat Tracker etc. -->
+      <genericcontrol name="PortraitFrame">
+          <bounds>450,45,25,25</bounds>
+          <icon>button_dragtarget</icon>
+          <script file="scripts\charsheet_portrait.lua" />
+      </genericcontrol> 
+      <!-- end - Add portrait for Combat Tracker etc. -->
+		
+			<!-- OVERVIEW -->
+			<genericcontrol name="overviewframe">
+				<bounds>15,20,415,80</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+
+			<labeledstring name="name">
+				<anchored>
+					<to>overviewframe</to>
+					<position>insidetopleft</position>
+					<offset>15,15</offset>
+					<size>
+						<width>150</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<anchorto>overviewframe</anchorto>
+				<label>name</label>
+				<font>sheetlabelsmall</font>
+				<tabtarget>
+					<next>servicegroup</next>
+					<prev>name</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      			<labeledstring name="servicegroup">
+				<anchored>
+					<to>name</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>225</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<label>service group</label>
+				<font>sheetlabelsmall</font>
+				<tabtarget>
+					<next>servicefirm</next>
+					<prev>name</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      			<labeledstring name="servicefirm">
+				<anchored>
+					<to>name</to>
+				        <position>belowleft</position>
+					<offset>0,10</offset>
+					<size>
+						<width>380</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<label>service firm</label>
+				<font>sheetlabelsmall</font>
+				<tabtarget>
+					<prev>servicegroup</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      
+     
+			<!-- PRIMARY ATTRIBUTES -->
+			<genericcontrol name="primaryframe">
+				<bounds>15,105,485,475</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+      
+			<abilityscore name="management">
+				<anchored>
+					<to>primaryframe</to>
+					<position>insidetopleft</position>
+					<offset>130,15</offset>
+				</anchored>
+        			<description>
+			          <text>Management</text>
+			        </description>
+				<tabtarget>
+					<next>dexterity</next>
+					<prev>name</prev>
+				</tabtarget>
+			</abilityscore>
+			<abilitylabel>
+				<anchored>
+					<to>management</to>
+				</anchored>
+				<static>Management</static>
+			</abilitylabel>
+			<concentrationscore name="bootlicking">
+				<anchored>
+					<to>management</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>bootlicking</to>
+				</anchored>
+				<static>Bootlicking</static>
+			</concentrationlabel>
+			<concentrationscore name="chutzpah">
+				<anchored>
+					<to>bootlicking</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>chutzpah</to>
+				</anchored>
+				<static>Chutzpah</static>
+			</concentrationlabel>
+			<concentrationscore name="congames">
+				<anchored>
+					<to>chutzpah</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>congames</to>
+				</anchored>
+				<static>Con Games</static>
+			</concentrationlabel>
+			<concentrationscore name="hygiene">
+				<anchored>
+					<to>congames</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>hygiene</to>
+				</anchored>
+				<static>Hygiene</static>
+			</concentrationlabel>
+			<concentrationscore name="interrogation">
+				<anchored>
+					<to>hygiene</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>interrogation</to>
+				</anchored>
+				<static>Interrogation</static>
+			</concentrationlabel>
+			<concentrationscore name="intimidation">
+				<anchored>
+					<to>interrogation</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>intimidation</to>
+				</anchored>
+				<static>Intimidation</static>
+			</concentrationlabel>
+			<concentrationscore name="moxie">
+				<anchored>
+					<to>intimidation</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>moxie</to>
+				</anchored>
+				<static>Moxie</static>
+			</concentrationlabel>
+			<concentrationscore name="oratory">
+				<anchored>
+					<to>moxie</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>oratory</to>
+				</anchored>
+				<static>Oratory</static>
+			</concentrationlabel>
+			
+			<abilityscore name="hardware">
+				<anchored>
+					<to>oratory</to>
+					<position>insidetopleft</position>
+					<offset>0,75</offset>
+				</anchored>
+        			<description>
+			          <text>hardware</text>
+			        </description>
+			</abilityscore>
+			<abilitylabel>
+				<anchored>
+					<to>hardware</to>
+				</anchored>
+				<static>Hardware</static>
+			</abilitylabel>
+			<concentrationscore name="botopsandmaintenance">
+				<anchored>
+					<to>hardware</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>botopsandmaintenance</to>
+				</anchored>
+				<static>Bot Ops &amp; Maint</static>
+			</concentrationlabel>
+			<concentrationscore name="chemicalengineering">
+				<anchored>
+					<to>botopsandmaintenance</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>chemicalengineering</to>
+				</anchored>
+				<static>Chemical Eng</static>
+			</concentrationlabel>
+			<concentrationscore name="electronicengineering">
+				<anchored>
+					<to>chemicalengineering</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>electronicengineering</to>
+				</anchored>
+				<static>Electronic Eng</static>
+			</concentrationlabel>
+			<concentrationscore name="habitatengineering">
+				<anchored>
+					<to>electronicengineering</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>habitatengineering</to>
+				</anchored>
+				<static>Habitat Eng</static>
+			</concentrationlabel>
+			<concentrationscore name="mechanicalengineering">
+				<anchored>
+					<to>habitatengineering</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>mechanicalengineering</to>
+				</anchored>
+				<static>Mechanical Eng</static>
+			</concentrationlabel>
+			<concentrationscore name="nuclearengineering">
+				<anchored>
+					<to>mechanicalengineering</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>nuclearengineering</to>
+				</anchored>
+				<static>Nuclear Eng</static>
+			</concentrationlabel>
+			<concentrationscore name="vehicleopsandmaintenance">
+				<anchored>
+					<to>nuclearengineering</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>vehicleopsandmaintenance</to>
+				</anchored>
+				<static>Vehicle Ops &amp; Maint</static>
+			</concentrationlabel>
+			<concentrationscore name="weaponandarmormaintenance">
+				<anchored>
+					<to>vehicleopsandmaintenance</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>weaponandarmormaintenance</to>
+				</anchored>
+				<static>Weapon &amp; Armor Maint</static>
+			</concentrationlabel>
+
+
+
+			<abilityscore name="stealth" source="stealth">
+				<anchored>
+					<to>primaryframe</to>
+					<position>insidetopleft</position>
+					<offset>285,15</offset>
+				</anchored>
+        			<description>
+			          <text>Stealth</text>
+			        </description>
+			</abilityscore>
+			<abilitylabel>
+				<anchored>
+					<to>stealth</to>
+				</anchored>
+				<static>Stealth</static>
+			</abilitylabel>
+			<concentrationscore name="concealment">
+				<anchored>
+					<to>stealth</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>concealment</to>
+				</anchored>
+				<static>Concealment</static>
+			</concentrationlabel>
+			<concentrationscore name="disguise">
+				<anchored>
+					<to>concealment</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>disguise</to>
+				</anchored>
+				<static>Disguise</static>
+			</concentrationlabel>
+			<concentrationscore name="highalert">
+				<anchored>
+					<to>disguise</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>highalert</to>
+				</anchored>
+				<static>High Alert</static>
+			</concentrationlabel>
+			<concentrationscore name="securitysystems">
+				<anchored>
+					<to>highalert</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>securitysystems</to>
+				</anchored>
+				<static>Security Systems</static>
+			</concentrationlabel>
+			<concentrationscore name="shadowing">
+				<anchored>
+					<to>securitysystems</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>shadowing</to>
+				</anchored>
+				<static>Shadowing</static>
+			</concentrationlabel>
+			<concentrationscore name="sleightofhand">
+				<anchored>
+					<to>shadowing</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>sleightofhand</to>
+				</anchored>
+				<static>Sleight of Hand</static>
+			</concentrationlabel>
+			<concentrationscore name="sneaking">
+				<anchored>
+					<to>sleightofhand</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>sneaking</to>
+				</anchored>
+				<static>Sneaking</static>
+			</concentrationlabel>
+			<concentrationscore name="surveillance">
+				<anchored>
+					<to>sneaking</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>surveillance</to>
+				</anchored>
+				<static>Surveillance</static>
+			</concentrationlabel>
+
+			<abilityscore name="software">
+				<anchored>
+					<to>surveillance</to>
+					<position>insidetopleft</position>
+					<offset>0,75</offset>
+				</anchored>
+        			<description>
+			          <text>Software</text>
+			        </description>
+			</abilityscore>
+			<abilitylabel>
+				<anchored>
+					<to>software</to>
+				</anchored>
+				<static>Software</static>
+			</abilitylabel>
+			<concentrationscore name="botprogramming">
+				<anchored>
+					<to>software</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>botprogramming</to>
+				</anchored>
+				<static>Bot Programming</static>
+			</concentrationlabel>
+			<concentrationscore name="cbay">
+				<anchored>
+					<to>botprogramming</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>cbay</to>
+				</anchored>
+				<static>C-Bay</static>
+			</concentrationlabel>
+			<concentrationscore name="dataanalysis">
+				<anchored>
+					<to>cbay</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>dataanalysis</to>
+				</anchored>
+				<static>Data Analysis</static>
+			</concentrationlabel>
+			<concentrationscore name="datasearch">
+				<anchored>
+					<to>dataanalysis</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>datasearch</to>
+				</anchored>
+				<static>Data Search</static>
+			</concentrationlabel>
+			<concentrationscore name="financialsystems">
+				<anchored>
+					<to>datasearch</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>financialsystems</to>
+				</anchored>
+				<static>Financial Systems</static>
+			</concentrationlabel>
+			<concentrationscore name="hacking">
+				<anchored>
+					<to>financialsystems</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>hacking</to>
+				</anchored>
+				<static>Hacking</static>
+			</concentrationlabel>
+			<concentrationscore name="operatingsystems">
+				<anchored>
+					<to>hacking</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>operatingsystems</to>
+				</anchored>
+				<static>Operating Systems</static>
+			</concentrationlabel>
+			<concentrationscore name="vehicleprogramming">
+				<anchored>
+					<to>operatingsystems</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>vehicleprogramming</to>
+				</anchored>
+				<static>Vehicle Programming</static>
+			</concentrationlabel>
+
+
+
+
+
+			<abilityscore name="violence" source="violence">
+				<anchored>
+					<to>primaryframe</to>
+					<position>insidetopright</position>
+					<offset>15,15</offset>
+				</anchored>
+        			<description>
+			          <text>Violence</text>
+			        </description>
+			</abilityscore>
+			<abilitylabel>
+				<anchored>
+					<to>violence</to>
+				</anchored>
+				<static>Violence</static>
+			</abilitylabel>
+			<concentrationscore name="agility">
+				<anchored>
+					<to>violence</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>agility</to>
+				</anchored>
+				<static>Agility</static>
+			</concentrationlabel>
+			<concentrationscore name="energyweapons">
+				<anchored>
+					<to>agility</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>energyweapons</to>
+				</anchored>
+				<static>Energy Weapons</static>
+			</concentrationlabel>
+			<concentrationscore name="demolition">
+				<anchored>
+					<to>energyweapons</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>demolition</to>
+				</anchored>
+				<static>Demolition</static>
+			</concentrationlabel>
+			<concentrationscore name="fieldweapons">
+				<anchored>
+					<to>demolition</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>fieldweapons</to>
+				</anchored>
+				<static>Field Weapons</static>
+			</concentrationlabel>
+			<concentrationscore name="finemanipulation">
+				<anchored>
+					<to>fieldweapons</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>finemanipulation</to>
+				</anchored>
+				<static>Fine Manipulation</static>
+			</concentrationlabel>
+			<concentrationscore name="handweapons">
+				<anchored>
+					<to>finemanipulation</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>handweapons</to>
+				</anchored>
+				<static>Hand Weapons</static>
+			</concentrationlabel>
+			<concentrationscore name="projectileweapons">
+				<anchored>
+					<to>handweapons</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>projectileweapons</to>
+				</anchored>
+				<static>Projectile Weapons</static>
+			</concentrationlabel>
+			<concentrationscore name="thrownweapons">
+				<anchored>
+					<to>projectileweapons</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>thrownweapons</to>
+				</anchored>
+				<static>Thrown Weapons</static>
+			</concentrationlabel>
+			<concentrationscore name="unarmedcombat">
+				<anchored>
+					<to>thrownweapons</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>unarmedcombat</to>
+				</anchored>
+				<static>Unarmed Combat</static>
+			</concentrationlabel>
+			<concentrationscore name="vehicularcombat">
+				<anchored>
+					<to>unarmedcombat</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>vehicularcombat</to>
+				</anchored>
+				<static>Vehicular Combat</static>
+			</concentrationlabel>
+
+
+
+			<abilityscore name="wetware">
+				<anchored>
+					<to>vehicularcombat</to>
+					<position>insidetopleft</position>
+					<offset>0,32</offset>
+				</anchored>
+        			<description>
+			          <text>Wetware</text>
+			        </description>
+			</abilityscore>
+			<abilitylabel>
+				<anchored>
+					<to>wetware</to>
+				</anchored>
+				<static>Wetware</static>
+			</abilitylabel>
+			<concentrationscore name="biosciences">
+				<anchored>
+					<to>wetware</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>biosciences</to>
+				</anchored>
+				<static>Biosciences</static>
+			</concentrationlabel>
+			<concentrationscore name="bioweapons">
+				<anchored>
+					<to>biosciences</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>bioweapons</to>
+				</anchored>
+				<static>Bioweapons</static>
+			</concentrationlabel>
+			<concentrationscore name="cloning">
+				<anchored>
+					<to>bioweapons</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>cloning</to>
+				</anchored>
+				<static>Cloning</static>
+			</concentrationlabel>
+			<concentrationscore name="medical">
+				<anchored>
+					<to>cloning</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>medical</to>
+				</anchored>
+				<static>Medical</static>
+			</concentrationlabel>
+			<concentrationscore name="outdoorlife">
+				<anchored>
+					<to>medical</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>outdoorlife</to>
+				</anchored>
+				<static>Outdoor Life</static>
+			</concentrationlabel>
+			<concentrationscore name="pharmatherapy">
+				<anchored>
+					<to>outdoorlife</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>pharmatherapy</to>
+				</anchored>
+				<static>Pharmatherapy</static>
+			</concentrationlabel>
+			<concentrationscore name="psychotherapy">
+				<anchored>
+					<to>pharmatherapy</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>psychotherapy</to>
+				</anchored>
+				<static>Psychotherapy</static>
+			</concentrationlabel>
+			<concentrationscore name="suggestion">
+				<anchored>
+					<to>psychotherapy</to>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>suggestion</to>
+				</anchored>
+				<static>Suggestion</static>
+			</concentrationlabel>
+
+			
+      
+     
+		</sheetdata>
+	</windowclass>
+</root>

@@ -1,0 +1,41 @@
+<!-- This file is part of the Fantasy Grounds Open Foundation Ruleset project. 
+  -- For the latest information, see http://www.fantasygrounds.com/
+  --
+  -- Copyright 2008 SmiteWorks Ltd.
+  --
+  -- This file is provided under the Open Game License version 1.0a
+  -- Refer to the license.html file for the full license text
+  --
+  -- All producers of work derived from this material are advised to
+  -- familiarize themselves with the license, and to take special
+  -- care in providing the definition of Product Identity (as specified
+  -- by the OGL) in their products.
+  --
+  -- All material submitted to the Open Foundation Ruleset project must
+  -- contain this notice in a manner applicable to the source file type.
+  --
+  -- MGTraveller extension by Ian M Kirby
+  -- Traveller ©2008 Mongoose Publishing
+  -->
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="2.0" release="1">
+	<properties>
+		<name>Paranoia XP</name>
+		<version>1</version>
+		
+		<author>Christian I Holston</author>
+		<description>Ruleset extension for Paranoia XP</description>
+		
+		<ruleset>
+			<name>foundation</name>
+		</ruleset>
+	</properties>
+
+	<base>
+		<includefile source="graphics.xml" />
+		<includefile source="charsheet.xml" />
+    
+    <script name="ChatDice" file="scripts/chatdice.lua" />
+ 	</base>
+</root>

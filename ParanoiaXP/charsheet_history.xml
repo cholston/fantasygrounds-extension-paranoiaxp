@@ -1,0 +1,468 @@
+<!-- This file is provided under the Open Game License version 1.0a
+  -- For more information on OGL and related issues, see 
+  --   http://www.wizards.com/d20
+  --
+  -- For information on the Fantasy Grounds d20 Ruleset licensing and
+  -- the OGL license text, see the d20 ruleset license in the program
+  -- options.
+  --
+  -- All producers of work derived from this definition are adviced to
+  -- familiarize themselves with the above licenses, and to take special
+  -- care in providing the definition of Product Identity (as specified
+  -- by the OGL) in their products.
+  --
+  -- Copyright 2007 SmiteWorks Ltd.
+  -->
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="2.0">
+<windowclass name="charsheet_skilllistitem">
+		<sizelimits>
+			<minimum>
+				<height>18</height>
+			</minimum>
+		</sizelimits>
+
+		<sheetdata>
+			<stringfield name="label">
+				<anchored>
+					<left>
+						<anchor>left</anchor>
+						<offset>10</offset>
+					</left>
+					<top>
+						<anchor>top</anchor>
+						<offset>5</offset>
+					</top>
+					<size>
+						<width>330</width>
+					</size>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<frame>
+					<name>textline</name>
+					<offset>0,5,0,0</offset>
+				</frame>
+			</stringfield>
+            
+			<stringfield name="statlabel">
+				<anchored>
+					<to>label</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>60</width>
+					</size>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<stateframe>
+					<hover>
+						<name>sheetfocus</name>
+						<offset>6,7,7,5</offset>
+					</hover>
+				</stateframe> 
+				<static />
+				<center />
+				<script>
+					function setStat(value)
+						if value and value ~= "" then
+              						setValue(value);
+						else
+							setValue("-");
+						end
+					end
+          
+					function cycleStat()
+						local cyclemap = { ["-"] = "Management", 
+								   ["Management"] = "Stealth", 
+					                           ["Stealth"] = "Violence", 
+				                                   ["Violence"] = "Hardware", 
+				                                   ["Hardware"] = "Software", 
+				                                   ["Software"] = "Wetware", 
+				                                   ["Wetware"] = "-" };
+						local statnow = getValue() or "-";
+						setStat(cyclemap[statnow]);
+					end
+          
+			                function onClickDown(button, x, y)
+				            cycleStat();
+					end
+			        </script>
+			</stringfield>
+            
+			<numberfield name="total">
+				<anchored>
+					<to>statlabel</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>27</width>
+					</size>
+				</anchored>
+				<frame>
+					<name>modifier</name>
+					<offset>5,5,5,5</offset>
+				</frame>
+				<font>sheetnumbersmall</font>
+				
+			</numberfield>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="charsheet_history">
+		<placement>
+			<size>
+				<width>252</width>
+				<height>611</height>
+			</size>
+		</placement>
+		<nodelete />
+		<sheetdata>
+      <!-- Toadwart/Kenshin - Add portrait for Combat Tracker etc. -->
+      <genericcontrol name="PortraitFrame">
+          <bounds>450,45,25,25</bounds>
+          <icon>button_dragtarget</icon>
+          <script file="scripts\charsheet_portrait.lua" />
+      </genericcontrol> 
+      <!-- end - Add portrait for Combat Tracker etc. -->
+		
+			<!-- OVERVIEW -->
+			<genericcontrol name="overviewframe">
+				<bounds>15,20,415,110</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+
+			<labeledstring name="name">
+				<anchored>
+					<to>overviewframe</to>
+					<position>insidetopleft</position>
+					<offset>15,15</offset>
+					<size>
+						<width>150</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<anchorto>overviewframe</anchorto>
+				<label>name</label>
+				<font>sheetlabelsmall</font>
+				<tabtarget>
+					<next>servicegroup</next>
+					<prev>name</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      			<labeledstring name="secretsociety">
+				<anchored>
+					<to>name</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>225</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<label>secret society</label>
+				<font>sheetlabelsmall</font>
+			</labeledstring>
+
+			<labeledstring name="mutation">
+				<anchored>
+					<to>name</to>
+					<position>belowleft</position>
+					<offset>0,10</offset>
+					<size>
+						<width>250</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<label>mutation</label>
+				<font>sheetlabelsmall</font>
+			</labeledstring>
+			<checkbox name="registeredmutant">
+				<anchored>
+					<to>mutation</to>
+					<position>right</position>
+					<offset>100</offset>
+					<size>
+						<width>12</width>
+						<height>20</height>
+						<offset>110</offset>
+					</size>
+				</anchored>
+			</checkbox>
+	    	        <concentrationlabel>
+				<anchored>
+					<to>registeredmutant</to>
+					<offset>0, 5</offset>
+					<size>
+						<width>60</width>
+					</size>
+				</anchored>
+				<static>Registered?</static>
+			</concentrationlabel>
+      			
+      			<concentrationscore name="societyrank">
+				<anchored>
+					<to>mutation</to>
+					<position>belowleft</position>
+					<offset>115,10</offset>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>societyrank</to>
+					<offset>0, 3</offset>
+					<size>
+						<width>80</width>
+					</size>
+
+				</anchored>
+				<static>Society Degree</static>
+			</concentrationlabel>
+			<concentrationscore name="perversity">
+				<anchored>
+					<to>societyrank</to>
+					<position>right</position>
+					<offset>155,0</offset>
+				</anchored>
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>perversity</to>
+					<offset>0, 3</offset>
+					<size>
+						<width>60</width>
+					</size>
+
+				</anchored>
+				<static>Perversity</static>
+			</concentrationlabel>
+
+
+      
+      <!-- PRIOR HISTORY -->
+			<genericcontrol name="historyframe">
+				<bounds>15,130,485,100</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+			
+			<stringcontrol>
+				<anchored>
+					<to>historyframe</to>
+					<position>insidetop</position>
+					<offset>0,11</offset>
+				</anchored>
+				<font>sheetlabel</font>
+				<center />
+				<static>Tics</static>
+			</stringcontrol>
+            
+			<stringfield name="priorhistory">
+				<anchored>
+					<to>historyframe</to>
+					<position>over</position>
+					<offset>-14,-9</offset>
+					<top>
+						<parent>historyframe</parent>
+						<offset>30</offset>
+					</top>
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<font>sheetlabelsmall</font>
+				<frame>
+					<name>textline</name>
+					<offset>2,0,2,0</offset>
+				</frame>
+			</stringfield>
+  
+      <!-- SKILLS -->
+			<genericcontrol name="skillframe">
+				<bounds>15,230,485,200</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+     			 <stringcontrol>
+				<anchored>
+					<to>skillframe</to>
+					<position>insidetop</position>
+					<offset>0,11</offset>
+				</anchored>
+				<font>sheetlabel</font>
+				<center />
+				<static>Additional Skills</static>
+			</stringcontrol>
+			<stringcontrol>
+				<anchored>
+					<to>skillframe</to>
+					<position>insidetopleft</position>
+					<offset>18,25</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>Skill</static>
+			</stringcontrol>
+			<stringcontrol>
+				<anchored>
+					<to>skillframe</to>
+					<position>insidetopright</position>
+					<offset>40,25</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<static>Level</static>
+			</stringcontrol>
+			<windowlist name="skilllist">
+				<anchored>
+					<to>skillframe</to>
+					<position>insidetopleft</position>
+					<offset>10,35</offset>
+					<size>
+						<height>150</height>
+					</size>
+				</anchored>
+				<datasource>.skilllist</datasource>
+				<class>charsheet_skilllistitem</class>
+				<allowcreate />
+				<allowdelete />
+				
+				
+			</windowlist>
+			<scrollercontrol>
+				<anchored>
+					<to>skillframe</to>
+					<position>insidebottomright</position>
+					<offset>5,5</offset>
+					<size>
+						<width>45</width>
+						<height>27</height>
+					</size>
+				</anchored>
+				<target>skilllist</target>
+				<button>
+					<normal>button_scroller</normal>
+					<pressed>button_scroller_down</pressed>
+				</button>
+			</scrollercontrol>
+			<genericcontrol name="gmsection">
+				<bounds>15,430,485,160</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+     			 <stringcontrol>
+				<anchored>
+					<to>gmsection</to>
+					<position>insidetop</position>
+					<offset>0,11</offset>
+				</anchored>
+				<font>sheetlabel</font>
+				<center />
+				<static>GM Section</static>
+			</stringcontrol>
+			<concentrationscore name="power">
+				<anchored>
+					<to>gmsection</to>
+					<position>insidetopleft</position>
+					<offset>115,25</offset>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<script>
+					function onInit()
+					if User.isHost() then
+						setVisible(true);
+					else
+						setVisible(false);
+					end
+					end
+				</script>
+
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>power</to>
+					<offset>0, 3</offset>
+					<size>
+						<width>80</width>
+					</size>
+
+				</anchored>
+				<static>Power</static>
+			</concentrationlabel>
+
+			<concentrationscore name="access">
+				<anchored>
+					<to>power</to>
+					<position>belowleft</position>
+					<offset>0,10</offset>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<script>
+					function onInit()
+					if User.isHost() then
+						setVisible(true);
+					else
+						setVisible(false);
+					end
+					end
+				</script>
+
+			</concentrationscore>
+			<concentrationlabel>
+				<anchored>
+					<to>access</to>
+					<offset>0, 3</offset>
+					<size>
+						<width>80</width>
+					</size>
+
+				</anchored>
+				<static>Access</static>
+			</concentrationlabel>
+			<stringcontrol name="treasonlabel">
+				<anchored>
+					<to>gmsection</to>
+					<position>insidetopright</position>
+					<offset>200,25</offset>
+				</anchored>
+				<font>sheetlabelsmall</font>
+				<center />
+				<static>Treason Codes</static>
+			</stringcontrol>
+            
+			<stringfield name="treasoncodes">
+				<anchored>
+					<to>treasonlabel</to>
+					<position>belowleft</position>
+					<offset>0,10</offset>
+					<size>
+						<height>80</height>
+						<width>200</width>
+					</size>
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<font>sheetlabelsmall</font>
+				<frame>
+					<name>textline</name>
+					<offset>2,0,2,0</offset>
+				</frame>
+				<script>
+					function onInit()
+					if User.isHost() then
+						setVisible(true);
+					else
+						setVisible(false);
+					end
+					end
+				</script>
+			</stringfield>
+
+		</sheetdata>
+	</windowclass>
+</root>

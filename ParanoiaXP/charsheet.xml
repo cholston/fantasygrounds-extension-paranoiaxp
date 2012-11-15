@@ -1,0 +1,29 @@
+<!-- This file is part of the Fantasy Grounds Open Foundation Ruleset project. 
+  -- For the latest information, see http://www.fantasygrounds.com/
+  --
+  -- Copyright 2008 SmiteWorks Ltd.
+  --
+  -- This file is provided under the Open Game License version 1.0a
+  -- Refer to the license.html file for the full license text
+  --
+  -- All producers of work derived from this material are advised to
+  -- familiarize themselves with the license, and to take special
+  -- care in providing the definition of Product Identity (as specified
+  -- by the OGL) in their products.
+  --
+  -- All material submitted to the Open Foundation Ruleset project must
+  -- contain this notice in a manner applicable to the source file type.
+  -->
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="2.0">
+	<includefile source="charsheet_templates.xml" />
+
+	<includefile source="charsheet_main.xml" />
+	<includefile source="charsheet_gear.xml" />
+	<includefile source="charsheet_history.xml" />
+	<includefile source="charsheet_allies.xml" />
+	<includefile source="charsheet_notes.xml" />
+
+	<includefile source="charsheet_toplevel.xml" />
+</root>

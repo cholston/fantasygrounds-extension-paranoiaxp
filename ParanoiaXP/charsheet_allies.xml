@@ -1,0 +1,292 @@
+<!-- This file is provided under the Open Game License version 1.0a
+  -- For more information on OGL and related issues, see 
+  --   http://www.wizards.com/d20
+  --
+  -- For information on the Fantasy Grounds d20 Ruleset licensing and
+  -- the OGL license text, see the d20 ruleset license in the program
+  -- options.
+  --
+  -- All producers of work derived from this definition are adviced to
+  -- familiarize themselves with the above licenses, and to take special
+  -- care in providing the definition of Product Identity (as specified
+  -- by the OGL) in their products.
+  --
+  -- Copyright 2007 SmiteWorks Ltd.
+  -->
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="2.0">
+	<windowclass name="charsheet_allies">
+		<placement>
+			<size>
+				<width>252</width>
+				<height>611</height>
+			</size>
+		</placement>
+		<nodelete />
+		<sheetdata>
+      <!-- Toadwart/Kenshin - Add portrait for Combat Tracker etc. -->
+      <genericcontrol name="PortraitFrame">
+          <bounds>450,45,25,25</bounds>
+          <icon>button_dragtarget</icon>
+          <script file="scripts\charsheet_portrait.lua" />
+      </genericcontrol> 
+      <!-- end - Add portrait for Combat Tracker etc. -->
+		
+			<!-- OVERVIEW -->
+			<genericcontrol name="overviewframe">
+				<bounds>15,20,415,70</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+
+			<labeledstring name="name">
+				<anchored>
+					<to>overviewframe</to>
+					<position>insidetopleft</position>
+					<offset>15,10</offset>
+					<size>
+						<width>250</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<anchorto>overviewframe</anchorto>
+				<height>20</height>
+				<label>name</label>
+				<tabtarget>
+					<next>race</next>
+					<prev>name</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      <labeledstring name="race">
+				<anchored>
+					<to>name</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>125</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<label>race</label>
+				<tabtarget>
+					<next>age</next>
+					<prev>name</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      <labeledstring name="age">
+				<anchored>
+					<to>name</to>
+          <position>belowleft</position>
+					<offset>0,5</offset>
+					<size>
+						<width>30</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<label>age</label>
+				<tabtarget>
+					<next>homeworld</next>
+					<prev>race</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      <labeledstring name="homeworld">
+				<anchored>
+					<to>age</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>125</width>
+					</size>
+				</anchored>
+				<label>homeworld</label>
+				<tabtarget>
+					<next>racetrait01</next>
+					<prev>age</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      <labeledstring name="racetrait01">
+				<anchored>
+					<to>homeworld</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>105</width>
+					</size>
+				</anchored>
+				<label>racial trait</label>
+				<tabtarget>
+					<next>racetrait02</next>
+					<prev>homeworld</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      <labeledstring name="racetrait02">
+				<anchored>
+					<to>racetrait01</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>105</width>
+					</size>
+				</anchored>
+				<label>racial trait</label>
+				<tabtarget>
+					<next>name</next>
+					<prev>racialtrait01</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      <!-- ALLIES, CONTACTS, ENEMIES, RIVALS -->
+			<genericcontrol name="alliesframe">
+				<bounds>15,90,240,250</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+			
+			<stringcontrol>
+				<anchored>
+					<to>alliesframe</to>
+					<position>insidetop</position>
+					<offset>0,11</offset>
+				</anchored>
+				<font>sheetlabel</font>
+				<center />
+				<static>Allies</static>
+			</stringcontrol>
+            
+			<stringfield name="allies">
+				<anchored>
+					<to>alliesframe</to>
+					<position>over</position>
+					<offset>-14,-9</offset>
+					<top>
+						<parent>alliesframe</parent>
+						<offset>30</offset>
+					</top>
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<font>sheettext</font>
+				<frame>
+					<name>textline</name>
+					<offset>2,0,2,0</offset>
+				</frame>
+			</stringfield>
+      
+			<genericcontrol name="contactsframe">
+				<bounds>250,90,250,250</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+			
+			<stringcontrol>
+				<anchored>
+					<to>contactsframe</to>
+					<position>insidetop</position>
+					<offset>0,11</offset>
+				</anchored>
+				<font>sheetlabel</font>
+				<center />
+				<static>Contacts</static>
+			</stringcontrol>
+            
+			<stringfield name="contacts">
+				<anchored>
+					<to>contactsframe</to>
+					<position>over</position>
+					<offset>-14,-9</offset>
+					<top>
+						<parent>contactsframe</parent>
+						<offset>30</offset>
+					</top>
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<font>sheettext</font>
+				<frame>
+					<name>textline</name>
+					<offset>2,0,2,0</offset>
+				</frame>
+			</stringfield>
+      
+			<genericcontrol name="enemiesframe">
+				<bounds>15,340,240,250</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+			
+			<stringcontrol>
+				<anchored>
+					<to>enemiesframe</to>
+					<position>insidetop</position>
+					<offset>0,11</offset>
+				</anchored>
+				<font>sheetlabel</font>
+				<center />
+				<static>Enemies</static>
+			</stringcontrol>
+            
+			<stringfield name="enemies">
+				<anchored>
+					<to>enemiesframe</to>
+					<position>over</position>
+					<offset>-14,-9</offset>
+					<top>
+						<parent>enemiesframe</parent>
+						<offset>30</offset>
+					</top>
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<font>sheettext</font>
+				<frame>
+					<name>textline</name>
+					<offset>2,0,2,0</offset>
+				</frame>
+			</stringfield>
+      
+			<genericcontrol name="rivalsframe">
+				<bounds>250,340,250,250</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+			
+			<stringcontrol>
+				<anchored>
+					<to>rivalsframe</to>
+					<position>insidetop</position>
+					<offset>0,11</offset>
+				</anchored>
+				<font>sheetlabel</font>
+				<center />
+				<static>Rivals</static>
+			</stringcontrol>
+            
+			<stringfield name="rivals">
+				<anchored>
+					<to>rivalsframe</to>
+					<position>over</position>
+					<offset>-14,-9</offset>
+					<top>
+						<parent>rivalsframe</parent>
+						<offset>30</offset>
+					</top>
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<font>sheettext</font>
+				<frame>
+					<name>textline</name>
+					<offset>2,0,2,0</offset>
+				</frame>
+			</stringfield>
+      
+		</sheetdata>
+	</windowclass>
+</root>

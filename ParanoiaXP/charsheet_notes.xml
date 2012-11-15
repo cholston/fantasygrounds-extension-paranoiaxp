@@ -1,0 +1,136 @@
+<!-- This file is provided under the Open Game License version 1.0a
+  -- For more information on OGL and related issues, see 
+  --   http://www.wizards.com/d20
+  --
+  -- For information on the Fantasy Grounds d20 Ruleset licensing and
+  -- the OGL license text, see the d20 ruleset license in the program
+  -- options.
+  --
+  -- All producers of work derived from this definition are adviced to
+  -- familiarize themselves with the above licenses, and to take special
+  -- care in providing the definition of Product Identity (as specified
+  -- by the OGL) in their products.
+  --
+  -- Copyright 2007 SmiteWorks Ltd.
+  -->
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="2.0">
+	<windowclass name="charsheet_notes">
+		<placement>
+			<size>
+				<width>252</width>
+				<height>611</height>
+			</size>
+		</placement>
+		<nodelete />
+		<sheetdata>
+      <!-- Toadwart/Kenshin - Add portrait for Combat Tracker etc. -->
+      <genericcontrol name="PortraitFrame">
+          <bounds>450,45,25,25</bounds>
+          <icon>button_dragtarget</icon>
+          <script file="scripts\charsheet_portrait.lua" />
+      </genericcontrol> 
+      <!-- end - Add portrait for Combat Tracker etc. -->
+		
+			<!-- OVERVIEW -->
+			<genericcontrol name="overviewframe">
+				<bounds>15,20,415,80</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+
+			<labeledstring name="name">
+				<anchored>
+					<to>overviewframe</to>
+					<position>insidetopleft</position>
+					<offset>15,15</offset>
+					<size>
+						<width>150</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<anchorto>overviewframe</anchorto>
+				<label>name</label>
+				<font>sheetlabelsmall</font>
+				<tabtarget>
+					<next>servicegroup</next>
+					<prev>name</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      			<labeledstring name="servicegroup">
+				<anchored>
+					<to>name</to>
+					<position>right</position>
+					<offset>5,0</offset>
+					<size>
+						<width>225</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<label>service group</label>
+				<font>sheetlabelsmall</font>
+				<tabtarget>
+					<next>servicefirm</next>
+					<prev>name</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      			<labeledstring name="servicefirm">
+				<anchored>
+					<to>name</to>
+				        <position>belowleft</position>
+					<offset>0,10</offset>
+					<size>
+						<width>380</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<label>service firm</label>
+				<font>sheetlabelsmall</font>
+				<tabtarget>
+					<prev>servicegroup</prev>
+				</tabtarget>
+			</labeledstring>
+      
+      <!-- NOTES -->
+			<genericcontrol name="notesframe">
+				<bounds>15,100,485,490</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>
+			</genericcontrol>
+			
+			<stringcontrol>
+				<anchored>
+					<to>notesframe</to>
+					<position>insidetop</position>
+					<offset>0,11</offset>
+				</anchored>
+				<font>sheetlabel</font>
+				<center />
+				<static>Additional Character Notes</static>
+			</stringcontrol>
+            
+			<stringfield name="notes">
+				<anchored>
+					<to>notesframe</to>
+					<position>over</position>
+					<offset>-14,-9</offset>
+					<top>
+						<parent>notesframe</parent>
+						<offset>30</offset>
+					</top>
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+				<font>sheettext</font>
+				<frame>
+					<name>textline</name>
+					<offset>2,0,2,0</offset>
+				</frame>
+			</stringfield>
+		</sheetdata>
+	</windowclass>
+</root>
